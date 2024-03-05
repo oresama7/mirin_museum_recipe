@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>全画面表示</title>
+  <style>
+    #fullScreenButton {
+      display: inline-block;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function requestFullscreen(elem) {
+      // 全画面表示をリクエストするメソッドを取得
+      const method = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.mozRequestFullScreen || elem.msRequestFullscreen;
+      if (method) {
+        method.call(elem); // 全画面表示をリクエスト
+        location.href="index.html";
+      }
+    }
+
+    function openFullscreen() {
+      const elem = document.documentElement;
+      requestFullscreen(elem);
+    }
+  </script>
+</head>
+<body>
+  <div id="fullScreenButton" onclick="openFullscreen();">全画面表示にする</div>
+</body>
+</html>
