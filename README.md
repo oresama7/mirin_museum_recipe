@@ -92,4 +92,4 @@ git で管理する必要もないので以下から movie/ ディレクトリ�
 
 ## JS などをどう構築していくかなど
 
-軽く #2 にまとめてます。
+軽く[こちら](https://github.com/oresama7/mirin_museum_recipe/issues/4)にまとめてます。
