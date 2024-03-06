@@ -17,7 +17,7 @@
 
         <main id="contents-area">
 
-            <h1 class="press-screen">画面をタッチしてください</h1>
+            <h1 class="contents-title">より美味しく、<br />様々な効果があるみりん</h1>
 
             <!-- background movie -->
             <div id="video-area">
@@ -25,12 +25,15 @@
                     <source src="movie/mirin_background_movie.mp4" type="video/mp4">
                 </video>
             </div>
-
-            <a href="title.html" class="touch">画面をタッチしてください</a>
             
         </main>
 
-        <script src="js/common.js"></script>
+        <script>
+            // 2.5 秒でメニューに移動
+            setTimeout(function () {
+            	window.location = 'menu.html';
+            }, 2500);
+        </script>
 
     </body>
 
