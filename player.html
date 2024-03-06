@@ -30,8 +30,16 @@
             }
 
             #msg {
-                font-size: xx-large;
-                line-height: 3rem;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                color: #009a4b;
+                font-size: 2rem;
+                font-weight: bold;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 1rem 0;
+                text-shadow: 0px 0px 8px #fff, 0 0 1em #fff, 0 0 0.2em #fff;
             }
 
         </style>        
@@ -41,43 +49,43 @@
         <video id="player" preload muted>
         	<source src="movie/01れんこん入りふわふわ鶏つくね_240228_02.mp4" type="video/mp4">
         </video>
-    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
-    <script>
-        function delay(n) {
-            return new Promise(function(resolve) {
-                setTimeout(resolve, n * 1000);
-            });
-        }
-        $(function(){
-            var player = $('#player').get(0);	//videoタグの要素を取得
-            var time = 0;
-            player.play();	//動画の再生
+        <a href="01_menu.html" class="btn return">メニュー選択にもどる</a>
+        <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+        <script>
+            function delay(n) {
+                return new Promise(function(resolve) {
+                    setTimeout(resolve, n * 1000);
+                });
+            }
+            $(function(){
+                var player = $('#player').get(0);	//videoタグの要素を取得
+                var time = 0;
+                player.play();	//動画の再生
 
-            player.addEventListener('loadedmetadata', function() {
-	            console.log(player.duration);
-                time = player.duration;
-            });
-            
-            //動画が終了したことを検出して発火する処理
-            player.addEventListener('ended', async function() {
-                // 止めの映像を流す
-                var time = player.duration - 1;
-                player.currentTime = time;
-                player.play();
-                player.pause();
+                player.addEventListener('loadedmetadata', function() {
+                    console.log(player.duration);
+                    time = player.duration;
+                });
+                
+                //動画が終了したことを検出して発火する処理
+                player.addEventListener('ended', async function() {
+                    // 止めの映像を流す
+                    var time = player.duration - 1;
+                    player.currentTime = time;
+                    player.play();
+                    player.pause();
 
-                // タップエリアを作り、同時に文字を出す
-                $("body").append("<div id='taparea'><div id='msg'>QR コードよりレシピのページへアクセス可能です。<br /> 画面をタップすると初期画面に戻ります</div></div>");
-                $("#taparea").on("click", function(){
+                    // タップエリアを作り、同時に文字を出す
+                    $("body").append("<div id='taparea'><div id='msg'>QR コードよりレシピのページへアクセス可能です。<br /> 画面をタップすると初期画面に戻ります</div></div>");
+                    $("#taparea").on("click", function(){
+                        location.href="index.html";
+                    });
+
+                    // n 秒待って、index に飛ばす
+                    await delay(120);
                     location.href="index.html";
                 });
-
-                // n 秒待って、index に飛ばす
-                await delay(120);
-                location.href="index.html";
             });
-        });
-
-    </script>
+        </script>
     </body>
 </html>
