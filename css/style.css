@@ -149,7 +149,7 @@ a.touch {
 
 /* ---- category / menu title ---------------------------------------- */
 .category-title {
-  font-size: 3rem;
+  font-size: 5.25rem;
   text-align: center;
   color: var(--main-color);
   text-shadow: 0px 0px 8px #fff, 0 0 1em #fff, 0 0 0.2em #fff;
@@ -159,16 +159,15 @@ a.touch {
 
 /* ---- category ---------------------------------------- */
 .category {
-  width: 1014px;
+  width: 1244px;
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
   align-items: center;
-  justify-content: center;
 }
 
 .category li {
-  width: 338px;
+  width: 388px;
 }
 
 .category li a {
@@ -230,6 +229,22 @@ a.touch {
 }
 
 /* ---- margin ---------------------------------------- */
+.mb08 {
+  margin-bottom: 8px;
+}
+
+.mb16 {
+  margin-bottom: 16px;
+}
+
+.mb24 {
+  margin-bottom: 24px;
+}
+
+.mb32 {
+  margin-bottom: 32px;
+}
+
 .mb48 {
   margin-bottom: 48px;
 }
@@ -304,4 +319,8 @@ a.touch {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.flex-between {
+  justify-content: space-between;
 }
