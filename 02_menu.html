@@ -11,28 +11,41 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
+
     <body>
 
-        <header id="app-header">
-            <h1>肉料理</h1>
-        </header>
-
         <main id="contents-area">
-            <ul>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-                <li><a href="movie/"></a></li>
-            </ul>
+
+            <section class="wrapper">
+
+                <h1 class="category-title mb16">魚料理</h1>
+            
+                <!-- category -->
+                <ul class="flex flex-wrap mb32 menu">
+                    <li><a href="player.html"><img src="img/btn_cat02a.png" alt="ぶりの照り焼き"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02b.png" alt="あじ（鯵）の南蛮漬け"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02c.png" alt="塩さばのさっぱり揚げ"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02d.png" alt="ぶり大根"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02e.png" alt="さばのみそ煮"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02f.png" alt="鮭の漬け焼き親子丼"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02g.png" alt="鮭のゴマ照り焼き"></a></li>
+                    <li><a href="player.html"><img src="img/btn_cat02h.png" alt="たこときゅうりの酢の物"></a></li>
+                </ul>
+            
+            </section>
+
+            <h2 class="press-button">ボタンをタッチしてください</h2>
+            
+            <a href="menu.html" class="btn return">ジャンル選択にもどる</a>
+
+            <!-- background movie -->
+            <div id="video-area">
+                <video id="video" webkit-playsinline playsinline muted autoplay loop>
+                    <source src="movie/mirin_background_movie.mp4" type="video/mp4">
+                </video>
+            </div>
+
         </main>
-        
-        <footer id="footer">
-            <p class="copyright"><small></small></p>
-        </footer>
 
         <script src=""></script>
         <script src="js/common.js"></script>

@@ -98,6 +98,9 @@ a.touch {
 
 /* ボタンをタッチしてください */
 .press-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   font-size: 2rem;
   text-align: center;
   color: var(--main-color);
@@ -226,6 +229,7 @@ a.touch {
   font-size: 1.25rem;
   font-weight: bold;
   color: var(--main-color);
+  z-index: 99999999999;
 }
 
 /* ---- margin ---------------------------------------- */
