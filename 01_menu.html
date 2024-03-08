@@ -22,7 +22,7 @@
             
                 <!-- category -->
                 <ul class="flex flex-wrap mb32 menu">
-                    <li><a href="player.html"><img src="img/btn_cat01a.png" alt="れんこん入りふわふわ鶏つくね"></a></li>
+                    <li><a href="player.html?movie=01れんこん入りふわふわ鶏つくね_240306.mp4&m=01"><img src="img/btn_cat01a.png" alt="れんこん入りふわふわ鶏つくね"></a></li>
                     <li><a href="player.html"><img src="img/btn_cat01b.png" alt="鶏手羽と大根のコクうま煮"></a></li>
                     <li><a href="player.html"><img src="img/btn_cat01c.png" alt="基本の鶏のから揚げ"></a></li>
                     <li><a href="player.html"><img src="img/btn_cat01d.png" alt="牛肉とごぼうのしぐれ煮"></a></li>
@@ -47,7 +47,12 @@
 
         </main>
 
-        <script src=""></script>
-        <script src="js/common.js"></script>
+        <script>
+            // 2分でindexに移動
+            setTimeout(function () {
+            	window.location = 'index.html';
+            }, 120000);
+        </script>
+        
     </body>
 </html>
