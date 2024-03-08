@@ -18,7 +18,7 @@
                 width: 100%; 
                 height: 100%; 
                 background: #FFF; 
-                z-index: 9999999998;
+                z-index: 99999997;
             }
 
             #taparea {
@@ -26,7 +26,7 @@
                 top:0; 
                 width: 100%; 
                 height: 100%; 
-                z-index: 9999999999;
+                z-index: 99999998;
             }
 
             #msg {
@@ -41,15 +41,14 @@
                 padding: 1rem 0;
                 text-shadow: 0px 0px 8px #fff, 0 0 1em #fff, 0 0 0.2em #fff;
             }
-
-        </style>        
+    </style>        
     </head>
 
     <body>
         <video id="player" preload muted>
-        	<source src="movie/01れんこん入りふわふわ鶏つくね_240228_02.mp4" type="video/mp4">
+        	<source src="" type="video/mp4" id ="movie_source">
         </video>
-        <a href="01_menu.html" class="btn return">メニュー選択にもどる</a>
+        <a href="" class="btn return" id="back">メニュー選択にもどる</a>
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script>
             function delay(n) {
@@ -57,9 +56,25 @@
                     setTimeout(resolve, n * 1000);
                 });
             }
+            function getParam(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
             $(function(){
+                var movie = getParam('movie');
+                var back = getParam('m')+"_menu.html";
+                $("#back").attr('href', back);
+                $("#movie_source").attr('src', "movie/"+movie);
+
                 var player = $('#player').get(0);	//videoタグの要素を取得
                 var time = 0;
+                player.load();
                 player.play();	//動画の再生
 
                 player.addEventListener('loadedmetadata', function() {
@@ -80,7 +95,7 @@
                     $("#taparea").on("click", function(){
                         location.href="index.html";
                     });
-
+                    $("#back").css("z-index",99999999);
                     // n 秒待って、index に飛ばす
                     await delay(120);
                     location.href="index.html";
