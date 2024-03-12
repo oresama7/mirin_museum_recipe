@@ -52,6 +52,7 @@
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script>
+            var player = document.getElementById( 'player' );
             function delay(n) {
                 return new Promise(function(resolve) {
                     setTimeout(resolve, n * 1000);
@@ -67,13 +68,40 @@
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
 
+            /** removeEventListenerできるように名前をつけておく*/
+            async function timeCheck() {
+                console.log( player.currentTime );
+	            if ( player.currentTime >= 48 ) {
+		            console.log( player.currentTime );
+		            /** ポーズする前にイベントリスナーを無効にしておく */	
+		            player.removeEventListener( 'timeupdate', timeCheck );
+		            player.pause();
+                    
+                    // 6 秒待ってから 動画終了処理を行う
+                    await delay(6);
+                    showTapArea();
+	            }  
+            }
+
+            async function showTapArea() {
+                // タップエリアを作り、同時に文字を出す
+                $("body").append("<div id='taparea'><div id='msg'>QR コードよりレシピのページへアクセス可能です。<br /> 画面をタップすると初期画面に戻ります</div></div>");
+                $("#taparea").on("click", function(){
+                    location.href="index.html";
+                });
+                $("#back").css("z-index",99999999);
+                // n 秒待って、index に飛ばす
+                await delay(120);
+                location.href="index.html";
+            }
+
             $(function(){
                 var movie = getParam('movie');
                 var back = getParam('m')+"_menu.html";
                 $("#back").attr('href', back);
                 $("#movie_source").attr('src', "movie/"+movie);
 
-                var player = $('#player').get(0);	//videoタグの要素を取得
+                // var player = $('#player').get(0);	//videoタグの要素を取得
                 var time = 0;
                 player.load();
                 player.play();	//動画の再生
@@ -82,25 +110,19 @@
                     console.log(player.duration);
                     time = player.duration;
                 });
-                
-                //動画が終了したことを検出して発火する処理
-                player.addEventListener('ended', async function() {
-                    // 止めの映像を流す
-                    var time = player.duration - 1;
-                    player.currentTime = time;
-                    player.play();
-                    player.pause();
-
-                    // タップエリアを作り、同時に文字を出す
-                    $("body").append("<div id='taparea'><div id='msg'>QR コードよりレシピのページへアクセス可能です。<br /> 画面をタップすると初期画面に戻ります</div></div>");
-                    $("#taparea").on("click", function(){
-                        location.href="index.html";
+                if ( movie === 'niku_03.mp4' ) { // adhoc niku_03.mp4 のみ 3/13 現在、終了時に黒画面になるため対処
+                    player.addEventListener( 'timeupdate', timeCheck, false );
+                } else {
+                    //動画が終了したことを検出して発火する処理
+                    player.addEventListener('ended', async function() {
+                        // 止めの映像を流す
+                        var time = player.duration - 1;
+                        player.currentTime = time;
+                        player.play();
+                        player.pause();
+                        showTapArea();
                     });
-                    $("#back").css("z-index",99999999);
-                    // n 秒待って、index に飛ばす
-                    await delay(120);
-                    location.href="index.html";
-                });
+                }
             });
         </script>
     </body>
