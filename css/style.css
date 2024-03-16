@@ -83,7 +83,7 @@ a.touch {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -53%);
   width: 100%;
 }
 
@@ -109,7 +109,7 @@ a.touch {
   text-align: center;
   color: var(--main-color);
   background-color: rgba(255, 255, 255, 0.35);
-  padding: 1rem 0;
+  padding: 1rem 0 4rem;
 }
 
 /* より美味しく、様々な効果があるみりん */
@@ -219,7 +219,7 @@ a.touch {
 /* ---- btn ---------------------------------------- */
 .btn {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 1.25rem 2rem;
   border-radius: 100px;
   box-shadow: 0 0 32px rgb(238, 217, 152);
@@ -229,7 +229,7 @@ a.touch {
 .return {
   position: absolute;
   right: 3rem;
-  top: 3rem;
+  bottom: 2.5rem;
   font-size: 1.25rem;
   font-weight: bold;
   color: var(--main-color);
